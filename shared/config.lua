@@ -7,6 +7,9 @@ Config.CloseHour = 5
 
 Config.UseMenu = true -- Set to true if you want to use qb-menu instead of inventory
 
+Config.DisplayBlip = false -- Set to true if you want the location to be shown on the map
+Config.BlipName = 'Unknown'
+
 Config.BlackListedJobs = { -- Add jobs you dont want using the black market
     'police',
     'ambulance'

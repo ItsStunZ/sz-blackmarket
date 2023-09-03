@@ -9,6 +9,22 @@ local function CheckMoney(itemPrice)
     end
 end
 
+CreateThread(function()
+    if Config.DisplayBlip then
+        for _, v in pairs(Config.DoorLocations) do
+            local blip = AddBlipForCoord(v.location)
+            SetBlipSprite(blip, 66)
+            SetBlipDisplay(blip, 6)
+            SetBlipScale(blip, 0.7)
+            -- SetBlipColour(blip, 1)
+            SetBlipAsShortRange(blip, true)
+            BeginTextCommandSetBlipName('STRING')
+            AddTextComponentString(Config.BlipName)
+            EndTextCommandSetBlipName(blip)
+        end
+    end
+end)
+
 function QBCore.Functions.Progressbar(name, label, duration, useWhileDead, canCancel, disableControls, animation, prop, propTwo, onFinish, onCancel) --not sure what this is here for unless youre trying to create a global progressbar
     exports['progressbar']:Progress({
         name = name:lower(),
