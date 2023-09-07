@@ -9,7 +9,7 @@ local function CheckMoney(itemPrice)
     end
 end
 
-CreateThread(function()
+Citizen.CreateThread(function()
     if Config.DisplayBlip then
         for _, v in pairs(Config.DoorLocations) do
             local blip = AddBlipForCoord(v.location)
