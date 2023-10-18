@@ -9,6 +9,30 @@ local function CheckMoney(itemPrice)
     end
 end
 
+local function PromptAmount()
+    local amount
+    local dialog = exports['qb-input']:ShowInput({
+        header = 'Choose Amount',
+        submitText = 'Confirm',
+        inputs = {
+            {
+                text = 'Amount',
+                name = 'amount',
+                type = 'number',
+                isRequired = true
+            }
+        },
+    })
+
+    if dialog ~= nil then
+        for k, v in pairs(dialog) do
+            print(k .. " : " .. v)
+            amount = tonumber(v)
+        end
+    end
+    return amount
+end
+
 Citizen.CreateThread(function()
     if Config.DisplayBlip then
         for _, v in pairs(Config.DoorLocations) do
@@ -72,8 +96,13 @@ for k, v in pairs(Config.DoorLocations) do
 end
 
 RegisterNetEvent('sz-blackmarket:client:PurchaseItem', function(args)
-    TriggerServerEvent('sz-blackmarket:server:AddItem', args.item, args.amount)
-    TriggerServerEvent('sz-blackmarket:server:PurchaseItem', args.item, args.price)
+    local amount = PromptAmount()
+    if amount > 0 then
+        TriggerServerEvent('sz-blackmarket:server:AddItem', args.item, amount)
+        TriggerServerEvent('sz-blackmarket:server:PurchaseItem', args.item, amount, args.price)
+    else
+        QBCore.Functions.Notify('You did not select an amount', 'error', 5000)
+    end
 end)
 
 
@@ -126,7 +155,6 @@ RegisterNetEvent('sz-blackmarket:client:OpenShop', function()
                             args = {
                                 item = v.name,
                                 price = v.price,
-                                amount = 1,
                             }
                         }
                     }
