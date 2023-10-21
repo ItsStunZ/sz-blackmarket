@@ -49,30 +49,6 @@ Citizen.CreateThread(function()
     end
 end)
 
-function QBCore.Functions.Progressbar(name, label, duration, useWhileDead, canCancel, disableControls, animation, prop, propTwo, onFinish, onCancel) --not sure what this is here for unless youre trying to create a global progressbar
-    exports['progressbar']:Progress({
-        name = name:lower(),
-        duration = duration,
-        label = label,
-        useWhileDead = useWhileDead,
-        canCancel = canCancel,
-        controlDisables = disableControls,
-        animation = animation,
-        prop = prop,
-        propTwo = propTwo,
-    }, function(cancelled)
-        if not cancelled then
-            if onFinish then
-                onFinish()
-            end
-        else
-            if onCancel then
-                onCancel()
-            end
-        end
-    end)
-end
-
 -- Target Doors
 for k, v in pairs(Config.DoorLocations) do
     exports['qb-target']:AddCircleZone(v.name, v.location, 0.4, {
