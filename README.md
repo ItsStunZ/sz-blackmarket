@@ -20,4 +20,4 @@ https://oosayeroo-scripts.tebex.io/
 https://github.com/oosayeroo
 
 Any issues, feel free to get in touch!
-https://discord.gg/tPrpmEwnCt
+discord - itsstunz
