@@ -1,5 +1,7 @@
 Simple black market script for QBCore
 
+NOTE: I no longer provide support for this script.
+
 # Preview
 
 https://streamable.com/jypifr
@@ -18,6 +20,3 @@ Credit to oosayeroo for helping with `sz-blackmarket:server:AddItem`. Check out 
 https://oosayeroo-scripts.tebex.io/
 
 https://github.com/oosayeroo
-
-Any issues, feel free to get in touch!
-discord - itsstunz
